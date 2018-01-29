@@ -40,6 +40,8 @@ values."
      auto-completion
      better-defaults
      emacs-lisp
+     cscope
+     imenu-list
      git
      markdown
      org
