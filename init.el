@@ -41,7 +41,6 @@ values."
      better-defaults
      emacs-lisp
      imenu-list
-     cscope
      git
      markdown
      org
@@ -330,7 +329,10 @@ you should place your code here."
   (require 'auto-save)            ;; 加载自动保存模块
   (auto-save-enable)              ;; 开启自动保存功能
   (setq auto-save-slient t)       ;; 自动保存的时候静悄悄的， 不要打扰我
-
+  ;; ':' will discard when enter eshell
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (define-key eshell-mode-map (kbd ":") nil)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
