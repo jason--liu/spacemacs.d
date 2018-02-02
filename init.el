@@ -31,13 +31,17 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     javascript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
      helm
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-private-snippets-directory "~/spacemacs.d/snippets/")
      better-defaults
      emacs-lisp
      imenu-list
@@ -50,7 +54,7 @@ values."
      spell-checking
      syntax-checking
      version-control
-	 c-c++
+	 (c-c++ :variables c-c++-enable-clang-support t)
 	 java
      )
    ;; List of additional packages that will be installed without being
@@ -333,6 +337,11 @@ you should place your code here."
   (add-hook 'eshell-mode-hook
             (lambda ()
               (define-key eshell-mode-map (kbd ":") nil)))
+  (setq-default indent-tabs-mode nil)
+  (setq default-tab-width 4)
+  (setq c-default-style "k&r")
+  (setq c-basic-offset 4)
+  ;; (imenu-list-minor-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
