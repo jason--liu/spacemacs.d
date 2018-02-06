@@ -31,16 +31,20 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     ;; javascript
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
+     (gtags :variables gtags-enable-by-default t)
      helm
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-sort-by-usage t
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-private-snippets-directory "~/spacemacs.d/snippets/")
      better-defaults
      emacs-lisp
-     cscope
      imenu-list
      git
      markdown
@@ -51,7 +55,7 @@ values."
      spell-checking
      syntax-checking
      version-control
-	 c-c++
+	 (c-c++ :variables c-c++-enable-clang-support t)
 	 java
      )
    ;; List of additional packages that will be installed without being
@@ -62,7 +66,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(fill-column-indicator)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -330,7 +334,15 @@ you should place your code here."
   (require 'auto-save)            ;; 加载自动保存模块
   (auto-save-enable)              ;; 开启自动保存功能
   (setq auto-save-slient t)       ;; 自动保存的时候静悄悄的， 不要打扰我
-
+  ;; ':' will discard when enter eshell
+  (add-hook 'eshell-mode-hook
+            (lambda ()
+              (define-key eshell-mode-map (kbd ":") nil)))
+  (setq-default indent-tabs-mode nil)
+  (setq default-tab-width 4)
+  (setq c-default-style "k&r")
+  (setq c-basic-offset 4)
+  ;; (imenu-list-minor-mode)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
