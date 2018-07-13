@@ -67,7 +67,7 @@
       ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
       ;; <M-m f e R> (Emacs style) to install them.
       ;; ----------------------------------------------------------------
-      (gtags :variables gtags-enable-by-default t)
+      gtags
       helm
       (auto-completion :variables
 		       auto-completion-enable-sort-by-usage t
@@ -77,6 +77,7 @@
       emacs-lisp
       imenu-list
       git
+      python
       markdown
       org
       (shell :variables
@@ -370,7 +371,8 @@
 	      (define-key eshell-mode-map (kbd ":") nil)))
   (setq-default indent-tabs-mode nil)
   (setq default-tab-width 4)
-  (setq c-default-style "k&r")
+  ;;(setq c-default-style "k&r")
+  (setq c-default-style "bsd")
   (setq c-basic-offset 4)
   ;; (imenu-list-minor-mode)
   )
