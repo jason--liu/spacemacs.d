@@ -42,6 +42,7 @@
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-help-tooltip t
                       auto-completion-private-snippets-directory "~/spacemacs.d/snippets/")
      better-defaults
      emacs-lisp
@@ -58,7 +59,7 @@
      syntax-checking
      version-control
      (c-c++ :variables c-c++-enable-clang-support t)
-     ;; java
+     ycmd
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -323,7 +324,7 @@
   This is the place where most of your configurations should be done. Unless it is
   explicitly specified that a variable should be set before a package is loaded,
   you should place your code here."
-
+  (setq powerline-default-separator 'slant)
   (defun my-c-mode-font-lock-if0 (limit)
     (save-restriction
       (widen)
@@ -381,7 +382,7 @@
       (insert (shell-command-to-string "xsel -o -b"))
       )
     )
-  (evil-leader/set-key "o y" 'copy-to-clipboard)
+  (evil-leader/set-key "o c" 'copy-to-clipboard)
   (evil-leader/set-key "o p" 'paste-from-clipboard)
 
   (setq linum-format "%d ")
