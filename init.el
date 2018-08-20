@@ -60,9 +60,10 @@
             shell-default-position 'bottom)
      spell-checking
      syntax-checking
-     version-control
-     ;; (c-c++ :variables c-c++-enable-clang-support t)
-     c-c++
+     (version-control :variables
+                      version-control-diff-side 'left)
+     (c-c++ :variables c-c++-enable-clang-support t)
+     ;;c-c++
      ;; semantic
      ycmd
      )
