@@ -420,6 +420,11 @@
   (setq c-default-style "bsd")
   (setq c-basic-offset 4)
   ;; (imenu-list-minor-mode)
+
+  ;;clang-format-buffer key bindins
+  (add-hook 'c++-mode-hook 'clang-format-bindings)
+  (defun clang-format-bindings ()
+    (define-key c++-mode-map [tab] 'clang-format-buffer))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
