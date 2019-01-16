@@ -37,8 +37,9 @@
      ;; Uncomment some layer names and press <SPC f e R> (Vim style) or
      ;; <M-m f e R> (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     (gtags :variables gtags-enable-by-default t)
-     helm
+     ;; (gtags :variables gtags-enable-by-default t)
+     ;;helm
+     ivy
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
@@ -150,8 +151,8 @@
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("YaHei Consolas Hybrid"
+                               :size 20
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
@@ -336,6 +337,11 @@
 
   (setq ycmd-force-semantic-completion t)
   (setq ycmd-server-command '("/usr/bin/python2" "/work/github/ycmd/ycmd"))
+  (setq ycmd-extra-conf-whitelist '("~/.ycm_extra_conf.py"))
+  (setq ycmd-global-config "~/.ycm_extra_conf.py")
+  (add-hook 'c-mode-hook 'ycmd-mode)
+  ;; (add-hook 'python-mode-hook 'ycmd-mode)
+
   (setq powerline-default-separator 'slant)
   (defun my-c-mode-font-lock-if0 (limit)
     (save-restriction
@@ -425,6 +431,30 @@
   (add-hook 'c++-mode-hook 'clang-format-bindings)
   (defun clang-format-bindings ()
     (define-key c++-mode-map [tab] 'clang-format-buffer))
+
+  (add-to-list 'load-path "~/.spacemacs.d/site-lisp/etags/")
+  (require 'counsel-etags)
+  (define-key evil-normal-state-map (kbd ", g d") 'counsel-etags-find-tag-at-point)
+  (define-key evil-normal-state-map (kbd ", g t") 'counsel-etags-grep-symbol-at-point)
+  ;; Don't ask before rereading the TAGS files if they have changed
+  (setq tags-revert-without-query t)
+  ;; Don't warn when TAGS files are large
+  (setq large-file-warning-threshold nil)
+  ;; How many seconds to wait before rerunning tags for auto-update
+  (setq counsel-etags-update-interval 180)
+  (eval-after-load 'counsel-etags
+    '(progn
+       ;; counsel-etags-ignore-directories does NOT support wildcast
+       (add-to-list 'counsel-etags-ignore-directories "build")
+       (add-to-list 'counsel-etags-ignore-directories "build_clang")
+       ;; counsel-etags-ignore-filenames supports wildcast
+       (add-to-list 'counsel-etags-ignore-filenames "TAGS")
+       (add-to-list 'counsel-etags-ignore-filenames "*.json")))
+  ;; Setup auto-update
+  (add-hook 'prog-mode-hook
+            (lambda ()
+              (add-hook 'after-save-hook
+                        'counsel-etags-virtual-update-tags 'append 'local)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
