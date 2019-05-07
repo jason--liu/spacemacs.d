@@ -47,7 +47,7 @@
                       auto-completion-private-snippets-directory "~/spacemacs.d/snippets/")
      better-defaults
      emacs-lisp
-     imenu-list
+     ;;imenu-list
      git
      (markdown :variables markdown-live-preview-engine `vmd)
      (python :variables
@@ -68,6 +68,7 @@
      ;;c-c++
      ;; semantic
      ycmd
+     treemacs
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -339,6 +340,7 @@
   (setq ycmd-server-command '("/usr/bin/python2" "/work/github/ycmd/ycmd"))
   (setq ycmd-extra-conf-whitelist '("~/.ycm_extra_conf.py"))
   (setq ycmd-global-config "~/.ycm_extra_conf.py")
+  (setq ycmd-startup-timeout 5)
   (add-hook 'c-mode-hook 'ycmd-mode)
   ;; (add-hook 'python-mode-hook 'ycmd-mode)
 
@@ -430,18 +432,21 @@
   ;;clang-format-buffer key bindins
   (add-hook 'c++-mode-hook 'clang-format-bindings)
   (defun clang-format-bindings ()
-    (define-key c++-mode-map [tab] 'clang-format-buffer))
+    ;; (define-key c++-mode-map [tab] 'clang-format-buffer)
+    ;; (define-key c-mode-map [tab] 'clang-format-buffer))
+    (define-key c++-mode-map (kbd "C-c C-f") 'clang-format-buffer)
+    (define-key c-mode-map (kbd "C-c C-f") 'clang-format-buffer))
 
   (add-to-list 'load-path "~/.spacemacs.d/site-lisp/etags/")
   (require 'counsel-etags)
   (define-key evil-normal-state-map (kbd ", g d") 'counsel-etags-find-tag-at-point)
-  (define-key evil-normal-state-map (kbd ", g t") 'counsel-etags-grep-symbol-at-point)
+  (define-key evil-normal-state-map (kbd ", g t") 'counsel-etags-grep)
   ;; Don't ask before rereading the TAGS files if they have changed
   (setq tags-revert-without-query t)
   ;; Don't warn when TAGS files are large
   (setq large-file-warning-threshold nil)
   ;; How many seconds to wait before rerunning tags for auto-update
-  (setq counsel-etags-update-interval 180)
+  ;; (setq counsel-etags-update-interval 180)
   (eval-after-load 'counsel-etags
     '(progn
        ;; counsel-etags-ignore-directories does NOT support wildcast
@@ -455,6 +460,7 @@
             (lambda ()
               (add-hook 'after-save-hook
                         'counsel-etags-virtual-update-tags 'append 'local)))
+  (add-hook 'after-save-hook 'counsel-etags-virtual-update-tags)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
