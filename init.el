@@ -441,6 +441,7 @@
   (require 'counsel-etags)
   (define-key evil-normal-state-map (kbd ", g d") 'counsel-etags-find-tag-at-point)
   (define-key evil-normal-state-map (kbd ", g t") 'counsel-etags-grep)
+  (define-key evil-visual-state-map (kbd ", g t") 'counsel-etags-grep)
   ;; Don't ask before rereading the TAGS files if they have changed
   (setq tags-revert-without-query t)
   ;; Don't warn when TAGS files are large
