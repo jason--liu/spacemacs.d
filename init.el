@@ -338,8 +338,8 @@
 
   (setq ycmd-force-semantic-completion t)
   (setq ycmd-server-command '("/usr/bin/python2" "/work/github/ycmd/ycmd"))
-  (setq ycmd-extra-conf-whitelist '("~/.ycm_extra_conf.py"))
-  (setq ycmd-global-config "~/.ycm_extra_conf.py")
+  (setq ycmd-extra-conf-whitelist '("~/.global_conf.py"))
+  (setq ycmd-global-config "~/.global_conf.py")
   (setq ycmd-startup-timeout 5)
   (add-hook 'c-mode-hook 'ycmd-mode)
   ;; (add-hook 'python-mode-hook 'ycmd-mode)
@@ -462,6 +462,12 @@
               (add-hook 'after-save-hook
                         'counsel-etags-virtual-update-tags 'append 'local)))
   (add-hook 'after-save-hook 'counsel-etags-virtual-update-tags)
+
+  (add-to-list 'load-path "~/.spacemacs.d/site-lisp/company-ctags/")
+  (require 'company-ctags)
+    (eval-after-load 'company
+      '(progn
+         (company-ctags-auto-setup)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
