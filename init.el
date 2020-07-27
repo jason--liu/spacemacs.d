@@ -47,7 +47,7 @@
                       auto-completion-private-snippets-directory "~/spacemacs.d/snippets/")
      better-defaults
      emacs-lisp
-     ;;imenu-list
+     imenu-list
      git
      (markdown :variables markdown-live-preview-engine `vmd)
      (python :variables
@@ -340,7 +340,7 @@
   (setq ycmd-server-command '("/usr/bin/python2" "/work/github/ycmd/ycmd"))
   (setq ycmd-extra-conf-whitelist '("~/.global_conf.py"))
   (setq ycmd-global-config "~/.global_conf.py")
-  (setq ycmd-startup-timeout 5)
+  (setq ycmd-startup-timeout 20)
   (add-hook 'c-mode-hook 'ycmd-mode)
   ;; (add-hook 'python-mode-hook 'ycmd-mode)
 
@@ -427,7 +427,11 @@
   ;;(setq c-default-style "k&r")
   (setq c-default-style "bsd")
   (setq c-basic-offset 4)
-  ;; (imenu-list-minor-mode)
+  (add-hook 'imenu-list-after-jump-hook #'recenter-top-bottom)
+  (setq imenu-list-position 'left)
+  ;; if imenu-list autostart
+  ;; (setq imenu-list-minor-mode t)
+  (setq imenu-list-auto-resize t)
 
   ;;clang-format-buffer key bindins
   (add-hook 'c++-mode-hook 'clang-format-bindings)
