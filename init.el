@@ -498,6 +498,15 @@
                         (overlay-put ol 'face 'hl-highlight)
                         ol))
                 (hl-line-mode 1)))
+
+    (require 'hi-lock)
+    (defun jpt-toggle-mark-word-at-point ()
+      (interactive)
+      (if hi-lock-interactive-patterns
+          (unhighlight-regexp (car (car hi-lock-interactive-patterns)))
+        (highlight-symbol-at-point)))
+
+    (global-set-key (kbd "s-.") 'jpt-toggle-mark-word-at-point)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
