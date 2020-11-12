@@ -87,7 +87,7 @@
    ;; `used-but-keep-unused' installs only the used packages but won't uninstall
    ;; them if they become unused. `all' installs *all* packages supported by
    ;; Spacemacs and never uninstall them. (default is `used-only')
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-install-packages 'used-but-keep-unesed))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -424,7 +424,7 @@
             (lambda ()
               (define-key eshell-mode-map (kbd ":") nil)))
   (setq-default indent-tabs-mode nil)
-  (setq default-tab-width 4)
+  (setq-default tab-width 4)
   ;;(setq c-default-style "k&r")
   (setq c-default-style "bsd")
   (setq c-basic-offset 4)
@@ -440,7 +440,7 @@
     ;; (define-key c++-mode-map [tab] 'clang-format-buffer)
     ;; (define-key c-mode-map [tab] 'clang-format-buffer))
     (define-key c++-mode-map (kbd "C-c C-f") 'clang-format-buffer)
-    (define-key c-mode-map (kbd "C-c C-f") 'clang-format-buffer))
+    (define-key c-mode (kbd "C-c C-f") 'clang-format-buffer))
 
   (add-to-list 'load-path "~/.spacemacs.d/site-lisp/etags/")
   (require 'counsel-etags)
@@ -452,7 +452,7 @@
   ;; Don't warn when TAGS files are large
   (setq large-file-warning-threshold nil)
   ;; How many seconds to wait before rerunning tags for auto-update
-  ;; (setq counsel-etags-update-interval 180)
+  (setq counsel-etags-update-interval 10)
   (eval-after-load 'counsel-etags
     '(progn
        ;; counsel-etags-ignore-directories does NOT support wildcast
@@ -466,13 +466,38 @@
             (lambda ()
               (add-hook 'after-save-hook
                         'counsel-etags-virtual-update-tags 'append 'local)))
-  (add-hook 'after-save-hook 'counsel-etags-virtual-update-tags)
+  ;; (setq counsel-etags-debug t)
+  ;; (add-hook 'after-save-hook 'counsel-etags-virtual-update-tags)
 
   (add-to-list 'load-path "~/.spacemacs.d/site-lisp/company-ctags/")
   (require 'company-ctags)
     (eval-after-load 'company
       '(progn
          (company-ctags-auto-setup)))
+
+    (defface hl-highlight
+      '((((class color) (min-colors 88) (background light))
+         :background "darkseagreen2")
+        (((class color) (min-colors 88) (background dark))
+         :background "darkolivegreen")
+        (((class color) (min-colors 16) (background light))
+         :background "darkseagreen2")
+        (((class color) (min-colors 16) (background dark))
+         :background "darkolivegreen")
+        (((class color) (min-colors 8))
+         :background "green" :foreground "black")
+        (t :inverse-video t))
+      "Basic face for highlighting."
+      :group 'hl-line)
+    (add-hook 'imenu-list-major-mode-hook
+              (lambda ()
+                (hl-line-mode -1)
+                (setq hl-line-overlay
+                      (let ((ol (make-overlay (point) (point))))
+                        (overlay-put ol 'priority -50)           ;(bug#16192)
+                        (overlay-put ol 'face 'hl-highlight)
+                        ol))
+                (hl-line-mode 1)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -503,7 +528,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (magit-section counsel-gtags add-node-modules-path wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy flycheck-irony company-irony irony flycheck-ycmd company-ycmd ycmd stickyfunc-enhance srefactor ac-ispell fill-column-indicator yapfify xterm-color ws-butler winum which-key volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package unfill toc-org spaceline smeargle shell-pop restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint indent-guide imenu-list hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav ein dumb-jump disaster diminish diff-hl define-word cython-mode company-statistics company-quickhelp company-c-headers company-anaconda column-enforce-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line))))
+    (vterm magit-section counsel-gtags add-node-modules-path wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy flycheck-irony company-irony irony flycheck-ycmd company-ycmd ycmd stickyfunc-enhance srefactor ac-ispell fill-column-indicator yapfify xterm-color ws-butler winum which-key volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package unfill toc-org spaceline smeargle shell-pop restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint indent-guide imenu-list hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav ein dumb-jump disaster diminish diff-hl define-word cython-mode company-statistics company-quickhelp company-c-headers company-anaconda column-enforce-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+ '(safe-local-variable-values (quote ((c-indent-level . 4)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
