@@ -338,12 +338,12 @@
   explicitly specified that a variable should be set before a package is loaded,
   you should place your code here."
 
-  (setq ycmd-force-semantic-completion t)
-  (setq ycmd-server-command '("/usr/bin/python2" "/work/github/ycmd/ycmd"))
-  (setq ycmd-extra-conf-whitelist '("~/.global_conf.py"))
-  (setq ycmd-global-config "~/.global_conf.py")
-  (setq ycmd-startup-timeout 20)
-  (add-hook 'c-mode-hook 'ycmd-mode)
+  ;; (setq ycmd-force-semantic-completion t)
+  ;; (setq ycmd-server-command '("/usr/bin/python2" "/work/github/ycmd/ycmd"))
+  ;; (setq ycmd-extra-conf-whitelist '("~/.global_conf.py"))
+  ;; (setq ycmd-global-config "~/.global_conf.py")
+  ;; (setq ycmd-startup-timeout 20)
+  ;; (add-hook 'c-mode-hook 'ycmd-mode)
   ;; (add-hook 'python-mode-hook 'ycmd-mode)
 
   (setq powerline-default-separator 'slant)
