@@ -68,9 +68,10 @@
      (c-c++ :variables c-c++-enable-clang-support t)
      ;;c-c++
      ;; semantic
-     ycmd
+     ;; ycmd
      treemacs
      shell-scripts
+     (lsp :variables lsp-lens-enable t)
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -445,9 +446,9 @@
 
   (add-to-list 'load-path "~/.spacemacs.d/site-lisp/etags/")
   (require 'counsel-etags)
-  (define-key evil-normal-state-map (kbd ", g d") 'counsel-etags-find-tag-at-point)
-  (define-key evil-normal-state-map (kbd ", g t") 'counsel-etags-grep)
-  (define-key evil-visual-state-map (kbd ", g t") 'counsel-etags-grep)
+  (define-key evil-normal-state-map (kbd ", g D") 'counsel-etags-find-tag-at-point)
+  (define-key evil-normal-state-map (kbd ", g T") 'counsel-etags-grep)
+  (define-key evil-visual-state-map (kbd ", g T") 'counsel-etags-grep)
   ;; Don't ask before rereading the TAGS files if they have changed
   (setq tags-revert-without-query t)
   ;; Don't warn when TAGS files are large
