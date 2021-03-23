@@ -464,10 +464,10 @@
        (add-to-list 'counsel-etags-ignore-filenames "TAGS")
        (add-to-list 'counsel-etags-ignore-filenames "*.json")))
   ;; Setup auto-update
-  (add-hook 'prog-mode-hook
-            (lambda ()
-              (add-hook 'after-save-hook
-                        'counsel-etags-virtual-update-tags 'append 'local)))
+  ;; (add-hook 'prog-mode-hook
+  ;;           (lambda ()
+  ;;             (add-hook 'after-save-hook
+  ;;                       'counsel-etags-virtual-update-tags 'append 'local)))
   ;; (setq counsel-etags-debug t)
   ;; (add-hook 'after-save-hook 'counsel-etags-virtual-update-tags)
 
