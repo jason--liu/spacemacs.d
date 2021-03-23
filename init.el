@@ -510,6 +510,9 @@
 
     (global-set-key (kbd "s-.") 'jpt-toggle-mark-word-at-point)
     (setq x86-lookup-pdf "~/Documents/x86/intel_rm.pdf")
+
+    ;; disable clangd auto fill headers
+    (setq lsp-clients-clangd-args `("--header-insertion-decorators=0"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
