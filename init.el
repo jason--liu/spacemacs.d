@@ -513,7 +513,10 @@
     (setq x86-lookup-pdf "~/Documents/x86/intel_rm.pdf")
 
     ;; disable clangd auto fill headers
-    (setq lsp-clients-clangd-args `("--header-insertion-decorators=0"))
+    (setq lsp-clients-clangd-args `(
+                                   "-j=2"
+                                    "--header-insertion=never"
+                                    "--header-insertion-decorators=0"))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
