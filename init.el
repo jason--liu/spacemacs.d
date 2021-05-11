@@ -438,18 +438,19 @@
   (setq imenu-list-auto-resize t)
 
   ;;clang-format-buffer key bindins
-  (add-hook 'c++-mode-hook 'clang-format-bindings)
-  (defun clang-format-bindings ()
+  ;; (add-hook 'c++-mode-hook 'clang-format-bindings)
+  ;; (defun clang-format-bindings ()
     ;; (define-key c++-mode-map [tab] 'clang-format-buffer)
     ;; (define-key c-mode-map [tab] 'clang-format-buffer))
-    (define-key c++-mode-map (kbd "C-c C-f") 'clang-format-buffer)
-    (define-key c-mode (kbd "C-c C-f") 'clang-format-buffer))
+    ;; (define-key c++-mode-map (kbd "C-c C-f") 'clang-format-buffer)
+    ;; (define-key c-mode (kbd "C-c C-f") 'clang-format-buffer))
 
   (add-to-list 'load-path "~/.spacemacs.d/site-lisp/etags/")
   (require 'counsel-etags)
-  (define-key evil-normal-state-map (kbd ", g D") 'counsel-etags-find-tag-at-point)
-  (define-key evil-normal-state-map (kbd ", g T") 'counsel-etags-grep)
-  (define-key evil-visual-state-map (kbd ", g T") 'counsel-etags-grep)
+  (define-key evil-normal-state-map (kbd ", j d") 'counsel-etags-find-tag-at-point)
+  (define-key evil-normal-state-map (kbd ", j t") 'counsel-etags-grep)
+  (define-key evil-visual-state-map (kbd ", j t") 'counsel-etags-grep)
+  (define-key evil-normal-state-map (kbd ", j i") 'counsel-etags-list-tag-in-current-file)
   ;; Don't ask before rereading the TAGS files if they have changed
   (setq tags-revert-without-query t)
   ;; Don't warn when TAGS files are large
