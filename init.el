@@ -516,8 +516,14 @@
     ;; disable clangd auto fill headers
     (setq lsp-clients-clangd-args `(
                                    "-j=2"
+                                   "--log=error"
                                     "--header-insertion=never"
                                     "--header-insertion-decorators=0"))
+
+    (setq-default git-magit-status-fullscreen t)
+    (setq tags-add-tables nil)
+    (add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
