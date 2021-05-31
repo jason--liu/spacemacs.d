@@ -39,7 +39,7 @@
      ;; ----------------------------------------------------------------
      ;; (gtags :variables gtags-enable-by-default t)
      ;;helm
-     asm
+     ;; asm
      ivy
      (auto-completion :variables
                       auto-completion-enable-sort-by-usage t
