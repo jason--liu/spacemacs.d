@@ -472,6 +472,7 @@
   ;;                       'counsel-etags-virtual-update-tags 'append 'local)))
   ;; (setq counsel-etags-debug t)
   ;; (add-hook 'after-save-hook 'counsel-etags-virtual-update-tags)
+  ;; (setq imenu-create-index-function 'counsel-etags-imenu-default-create-index-function)
 
   (add-to-list 'load-path "~/.spacemacs.d/site-lisp/company-ctags/")
   (require 'company-ctags)
