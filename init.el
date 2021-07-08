@@ -438,14 +438,6 @@
   ;; (setq imenu-list-minor-mode t)
   (setq imenu-list-auto-resize t)
 
-  ;;clang-format-buffer key bindins
-  ;; (add-hook 'c++-mode-hook 'clang-format-bindings)
-  ;; (defun clang-format-bindings ()
-    ;; (define-key c++-mode-map [tab] 'clang-format-buffer)
-    ;; (define-key c-mode-map [tab] 'clang-format-buffer))
-    ;; (define-key c++-mode-map (kbd "C-c C-f") 'clang-format-buffer)
-    ;; (define-key c-mode (kbd "C-c C-f") 'clang-format-buffer))
-
   (add-to-list 'load-path "~/.spacemacs.d/site-lisp/etags/")
   (require 'counsel-etags)
   (define-key evil-normal-state-map (kbd ", j d") 'counsel-etags-find-tag-at-point)
