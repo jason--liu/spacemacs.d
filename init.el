@@ -56,7 +56,14 @@
              ;; python-sort-imports-on-save t        ; 当保存的时候自动排序导入的包
              )
      ipython-notebook
-     org
+     (org :variables
+          org-enable-org-journal-support t
+          org-journal-dir "~/Dropbox/org/journal/"
+          org-journal-file-type 'monthly
+          org-journal-file-format "%Y-%m"
+          org-default-notes-file "~/Dropbox/org/captures.org"
+          org-superstar-leading-bullet "  "
+          )
      (shell :variables
             shell-default-height 30
             shell-default-position 'bottom
