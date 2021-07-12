@@ -71,7 +71,10 @@
      ;;c-c++
      ;; semantic
      ;; ycmd
-     treemacs
+     (treemacs :variables
+               ;; treemacs-use-follow-mode 'tag
+               treemacs-use-filewatch-mode t
+               )
      shell-scripts
      (lsp :variables lsp-lens-enable t)
      semantic
