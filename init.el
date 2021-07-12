@@ -58,8 +58,10 @@
      ipython-notebook
      org
      (shell :variables
+            shell-default-shell 'multi-term
             shell-default-height 30
-            shell-default-position 'bottom
+            shell-default-position 'right
+            shell-default-width 50
             shell-default-term-shell "/bin/bash")
      spell-checking
      syntax-checking
