@@ -48,7 +48,11 @@
                       auto-completion-private-snippets-directory "~/spacemacs.d/snippets/")
      better-defaults
      emacs-lisp
-     imenu-list
+     (imenu-list :variables
+                 imenu-list-focus-after-activation nil
+                 imenu-list-position 'left
+                 imenu-list-auto-resize t
+                 )
      git
      (markdown :variables markdown-live-preview-engine `vmd)
      (python :variables
@@ -446,10 +450,8 @@
   (setq c-default-style "bsd")
   (setq c-basic-offset 4)
   (add-hook 'imenu-list-after-jump-hook #'recenter-top-bottom)
-  (setq imenu-list-position 'left)
   ;; if imenu-list autostart
   ;; (setq imenu-list-minor-mode t)
-  (setq imenu-list-auto-resize t)
 
   (add-to-list 'load-path "~/.spacemacs.d/site-lisp/etags/")
   (require 'counsel-etags)
