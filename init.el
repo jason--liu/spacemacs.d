@@ -547,6 +547,8 @@
           org-roam-server-network-label-truncate t
           org-roam-server-network-label-truncate-length 60
           org-roam-server-network-label-wrap-length 20)
+
+    (setq org-download-annotate-function (lambda (_link) ""))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
