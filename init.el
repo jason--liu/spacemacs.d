@@ -72,6 +72,7 @@
           org-enable-roam-server t
           org-enable-roam-protocol t
           org-roam-directory "~/Dropbox/org/roam"
+          org-roam-db-location "~/Dropbox/org/roam/org-roam.db"
           org-roam-v2-ack t
           )
      (shell :variables
