@@ -72,10 +72,9 @@
           org-superstar-leading-bullet "  "
           ;;org-roam
           org-enable-roam-support t
-          org-enable-roam-server t
           org-enable-roam-protocol t
           org-roam-directory "~/Dropbox/org/roam"
-          org-roam-db-location "~/Dropbox/org/roam/org-roam.db"
+          ;; org-roam-db-location "~/Dropbox/org/roam/org-roam.db"
           org-roam-v2-ack t
           )
      (shell :variables
@@ -541,15 +540,6 @@
 
     (setq tags-add-tables nil)
     (add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
-
-    ;;org-roam server
-    (setq org-roam-server-host "127.0.0.1"
-          org-roam-server-port 9090
-          org-roam-server-export-inline-images t
-          org-roam-server-authenticate nil
-          org-roam-server-network-label-truncate t
-          org-roam-server-network-label-truncate-length 60
-          org-roam-server-network-label-wrap-length 20)
 
     ;; hidden org-download annotation
     (setq org-download-annotate-function (lambda (_link) ""))
