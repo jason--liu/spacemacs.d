@@ -53,7 +53,10 @@
                  imenu-list-position 'left
                  imenu-list-auto-resize t
                  )
-     git
+     (git :variables
+          git-magit-status-fullscreen t
+          git-enable-magit-todos-plugin t
+          )
      (markdown :variables markdown-live-preview-engine `vmd)
      (python :variables
              python-fill-column 80                ; 开启 80 列的提示
@@ -536,7 +539,6 @@
                                     "--header-insertion=never"
                                     "--header-insertion-decorators=0"))
 
-    (setq-default git-magit-status-fullscreen t)
     (setq tags-add-tables nil)
     (add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
 
