@@ -77,6 +77,21 @@
           ;; org-roam-db-location "~/Dropbox/org/roam/org-roam.db"
           org-roam-v2-ack t
           )
+     (deft :variables
+           deft-zetteldeft t
+           deft-directory "~/Dropbox/org/roam"
+           deft-extensions `("org" "md" "txt")
+           deft-use-filename-as-title t
+           deft-use-filter-string-for-filename t
+           deft-org-mode-title-prefix t
+           deft-recursive t
+           deft-strip-summary-regexp (concat "\\("
+                                             "[\n\t]" ;; blank
+                                             "\\|^#\\+[[:upper:]_]+:.*$" ;; org-mode metadata
+                                             "\\|^#\\+[[:alnum:]_]+:.*$" ;; org-mode metadata
+                                             ":PROPERTIES:\n\\(.+\n\\)+:END:\n"
+                                             "\\)")
+       )
      (shell :variables
             shell-default-shell 'multi-term
             shell-default-height 30
