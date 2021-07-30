@@ -568,6 +568,15 @@
       (if (eq (get 'org-toggle-properties-hide-state 'state) 'hidden)
           (org-show-properties)
         (org-hide-properties)))
+
+    (setq org-roam-complete-everywhere t)
+
+    (add-to-list 'display-buffer-alist
+                 '("\\*org-roam\\*"
+                   (display-buffer-in-direction)
+                   (direction . right)
+                   (window-width . 0.33)
+                   (window-height . fit-window-to-buffer)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
