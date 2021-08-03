@@ -64,11 +64,12 @@
              )
      ipython-notebook
      (org :variables
+          org-default-notes-file "~/Dropbox/org/captures.org"
+          ;; org-journal
           org-enable-org-journal-support t
           org-journal-dir "~/Dropbox/org/journal/"
-          org-journal-file-type 'monthly
-          org-journal-file-format "%Y-%m"
-          org-default-notes-file "~/Dropbox/org/captures.org"
+          org-journal-file-type 'yearly
+          org-journal-file-format "%Y"
           org-superstar-leading-bullet "  "
           ;;org-roam
           org-enable-roam-support t
