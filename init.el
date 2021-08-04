@@ -594,6 +594,35 @@
                    (direction . right)
                    (window-width . 0.33)
                    (window-height . fit-window-to-buffer)))
+    (server-start)
+
+    (defun my/open-org-file()
+      "Open ~/Dropbox/org/inbox.org file"
+      (interactive)
+      (find-file "~/Dropbox/org/inbox.org"))
+    (global-set-key (kbd "<f12>") 'my/open-org-file)
+
+    (setq org-enforce-todo-dependencies t)
+    (setq org-todo-keyword-faces '(("TODO" . "red")
+                                  ("DOING" . "yellow")
+                                  ("DONE" . "green")))
+    (setq org-todo-keywords '((sequence "TODO(t!)" "DOING(i!)" "|" "DONE(d!)" "ABORT(a!)")))
+    (setq org-capture-templates '(("t" "Todo [inbox]" entry
+                                   (file+headline "~/Dropbox/org/inbox.org" "Tasks")
+                                   "* TODO %i%?")
+                                ("j" "Journal"  entry
+                                  (file+datetree "~/Dropbox/org/journal.org")
+                                "* %U - %^{heading} %^g\n %?\n")))
+
+    ;; this controls the color of bold, italic, underline, verbatim, strikethrough
+    (setq org-emphasis-alist
+    '(("*" (bold :foreground "Orange" ))
+            ("/" (italic :foreground "dark salmon" )) ;; italic text, the text will be "dark salmon"
+            ("_" underline :foreground "cyan" ) ;; underlined text, color is "cyan"
+            ("=" (:foreground "sky blue" )) ;; background of text is "snow1" and text is "deep slate blue"
+            ("~" (:background "PaleGreen1" :foreground "dim gray" ))
+            ("+" (:strike-through t))))
+    (setq org-hide-emphasis-markers t) ;; hides the emphasis markers
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -625,8 +654,13 @@ This function is called at the very end of Spacemacs initialization."
  '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
    (quote
-    (imenu-extra vterm magit-section counsel-gtags add-node-modules-path wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy flycheck-irony company-irony irony flycheck-ycmd company-ycmd ycmd stickyfunc-enhance srefactor ac-ispell fill-column-indicator yapfify xterm-color ws-butler winum which-key volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package unfill toc-org spaceline smeargle shell-pop restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint indent-guide imenu-list hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav ein dumb-jump disaster diminish diff-hl define-word cython-mode company-statistics company-quickhelp company-c-headers company-anaconda column-enforce-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
- '(safe-local-variable-values (quote ((c-indent-level . 4)))))
+    (dap-mode bui x86-lookup nasm-mode lv insert-shebang fish-mode company-shell wgrep smex ivy-hydra flyspell-correct-ivy counsel-projectile counsel swiper ivy flycheck-irony company-irony irony flycheck-ycmd company-ycmd ycmd stickyfunc-enhance srefactor ac-ispell fill-column-indicator yapfify xterm-color ws-butler winum which-key volatile-highlights vmd-mode vi-tilde-fringe uuidgen use-package unfill toc-org spaceline smeargle shell-pop restart-emacs rainbow-delimiters pyvenv pytest pyenv-mode py-isort popwin pip-requirements persp-mode pcre2el paradox orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets open-junk-file neotree mwim multi-term move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum live-py-mode linum-relative link-hint indent-guide imenu-list hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-pydoc helm-projectile helm-mode-manager helm-make helm-gtags helm-gitignore helm-flx helm-descbinds helm-company helm-c-yasnippet helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md ggtags fuzzy flyspell-correct-helm flycheck-pos-tip flx-ido fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help elisp-slime-nav ein dumb-jump disaster diminish diff-hl define-word cython-mode company-statistics company-quickhelp company-c-headers company-anaconda column-enforce-mode cmake-mode clean-aindent-mode clang-format auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+ '(safe-local-variable-values
+   (quote
+    ((eval setq org-download-image-dir
+           (file-name-sans-extension
+            (buffer-name)))
+     (c-indent-level . 4)))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
