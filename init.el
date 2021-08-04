@@ -623,6 +623,20 @@
             ("~" (:background "PaleGreen1" :foreground "dim gray" ))
             ("+" (:strike-through t))))
     (setq org-hide-emphasis-markers t) ;; hides the emphasis markers
+
+    ;; toggle open/fold source blocks
+    (defvar org-blocks-hidden nil)
+    (defun org-toggle-blocks ()
+      (interactive)
+      (if org-blocks-hidden
+          (org-show-block-all)
+        (org-hide-block-all))
+      (setq-local org-blocks-hidden (not org-blocks-hidden)))
+
+    (add-hook 'org-mode-hook 'org-toggle-blocks)
+    (define-key org-mode-map (kbd "C-c t") 'org-toggle-blocks)
+
+    (setq org-startup-with-inline-images nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
