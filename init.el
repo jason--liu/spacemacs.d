@@ -637,6 +637,16 @@
     (define-key org-mode-map (kbd "C-c t") 'org-toggle-blocks)
 
     (setq org-startup-with-inline-images nil)
+    ;; revision
+    (remove-hook 'magit-revision-sections-hook 'magit-insert-revision-headers)
+    ;; (remove-hook 'magit-revision-sections-hook 'magit-insert-revision-notes)
+    ;; (remove-hook 'magit-revision-sections-hook 'magit-insert-revision-diff)
+    ;; (remove-hook 'magit-revision-sections-hook 'magit-insert-revision-tag)
+    ;; (remove-hook 'magit-revision-sections-hook 'magit-insert-xref-buttons)
+
+    ;; status
+    ;; (remove-hook 'magit-status-sections-hook 'magit-insert-tags-header)
+    (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
