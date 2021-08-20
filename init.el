@@ -641,7 +641,7 @@
     ;; speed up magit
     (setq magit-revision-insert-related-refs nil)
     (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
-
+    (setq org-image-actual-width '(800))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
