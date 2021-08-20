@@ -642,6 +642,16 @@
     (setq magit-revision-insert-related-refs nil)
     (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
     (setq org-image-actual-width '(800))
+
+    ;; org-roam-ui
+    (add-to-list 'load-path "~/.spacemacs.d/site-lisp/org-roam-ui")
+    (load-library "org-roam-ui")
+    (use-package websocket
+      :after org-roam)
+    (use-package org-roam-ui
+      :after org-roam;; or:after org
+      :hook (org-roam . org-roam-ui-mode)
+      :config)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
