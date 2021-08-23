@@ -55,7 +55,7 @@
                  )
      (git :variables
           git-magit-status-fullscreen t
-          git-enable-magit-todos-plugin t
+          ;; git-enable-magit-todos-plugin t
           )
      (markdown :variables markdown-live-preview-engine `vmd)
      (python :variables
