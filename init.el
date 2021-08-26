@@ -670,6 +670,7 @@
       :after org-roam;; or:after org
       :hook (org-roam . org-roam-ui-mode)
       :config)
+    (setq org-startup-folded t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
