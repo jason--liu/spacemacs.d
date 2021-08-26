@@ -594,7 +594,22 @@
                    (direction . right)
                    (window-width . 0.33)
                    (window-height . fit-window-to-buffer)))
-    (server-start)
+    ;; org-roam-node-find show backlinks
+    (cl-defmethod org-roam-node-directories ((node org-roam-node))
+      (if-let ((dirs (file-name-directory (file-relative-name (org-roam-node-file node) org-roam-directory))))
+          (format "(%s)" (car (f-split dirs)))
+        ""))
+
+    (cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
+      (let* ((count (caar (org-roam-db-query
+                           [:select (funcall count source)
+                                    :from links
+                                    :where (= dest $s1)
+                                    :and (= type "id")]
+                           (org-roam-node-id node)))))
+        (format "[%d]" count)))
+
+    (setq org-roam-node-display-template "${directories:10} ${tags:10} ${title:100} ${backlinkscount:6}")
 
     (defun my/open-org-file()
       "Open ~/Dropbox/org/inbox.org file"
