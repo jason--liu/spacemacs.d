@@ -684,6 +684,7 @@
 		          "\\|^#\\+[[:alpha:]_]+:.*$" ;; org-mode metadata
 		          "\\|^:PROPERTIES:\n\\(.+\n\\)+:END:\n"
 		          "\\)"))
+    ;; reserve break line when org to html
     (setq org-export-preserve-breaks t)
   )
 
