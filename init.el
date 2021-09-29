@@ -117,7 +117,7 @@
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(evil-escape websocket simple-httpd)
+   dotspacemacs-additional-packages '(evil-escape websocket simple-httpd dired-hide-dotfiles)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -686,6 +686,12 @@
 		          "\\)"))
     ;; reserve break line when org to html
     (setq org-export-preserve-breaks t)
+    (setq dired-listing-switches "-agho --group-directories-first")
+    (use-package dired-hide-dotfiles
+      :hook (dired-mode . dired-hide-dotfiles-mode)
+      :config
+      (evil-collection-define-key 'normal 'dired-mode-map
+        "H" 'dired-hide-dotfiles-mode))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
