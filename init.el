@@ -608,6 +608,13 @@
 
     (setq org-roam-node-display-template "${directories:10} ${tags:10} ${title:100} ${backlinkscount:6}")
 
+    (defun org-roam-node-insert-immediate (arg &rest args)
+      (interactive "P")
+      (let ((args (cons arg args))
+            (org-roam-capture-templates (list (append (car org-roam-capture-templates)
+                                                      '(:immediate-finish t)))))
+        (apply #'org-roam-node-insert args)))
+
     (defun my/open-org-file()
       "Open ~/Dropbox/org/inbox.org file"
       (interactive)
