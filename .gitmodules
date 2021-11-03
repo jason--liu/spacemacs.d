@@ -1,3 +1,9 @@
 [submodule "site-lisp/org-roam-ui"]
 	path = site-lisp/org-roam-ui
 	url = https://github.com/org-roam/org-roam-ui
+[submodule "site-lisp/auto-save"]
+	path = site-lisp/auto-save
+	url = https://github.com/manateelazycat/auto-save.git
+[submodule "site-lisp/etags"]
+	path = site-lisp/etags
+	url = https://github.com/redguardtoo/counsel-etags.git
