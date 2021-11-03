@@ -6,4 +6,4 @@
 	url = https://github.com/redguardtoo/counsel-etags.git
 [submodule "site-lisp/org-roam-ui"]
 	path = site-lisp/org-roam-ui
-	url = https://github.com/org-roam/org-roam-ui.git
+	url = https://github.com/org-roam/org-roam-ui
