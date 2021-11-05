@@ -630,8 +630,11 @@
                                    (file+headline "~/Dropbox/org/inbox.org" "Tasks")
                                    "* TODO %i%?")
                                 ("j" "Journal"  entry
-                                  (file+datetree "~/Dropbox/org/journal.org")
-                                "* %U - %^{heading} %^g\n %?\n")))
+                                  (file+datetree "~/Dropbox/org/journal/journal.org")
+                                  "* %U - %^{heading} %^g\n %?\n")
+                                ("n" "Notes" entry (file "~/Dropbox/org/inbox.org")
+                                  "* %^{heading}  %^g\n  %?\n")
+                                ))
 
     ;; this controls the color of bold, italic, underline, verbatim, strikethrough
     (setq org-emphasis-alist
