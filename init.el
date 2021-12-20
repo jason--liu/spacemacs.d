@@ -111,7 +111,7 @@
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(evil-escape websocket simple-httpd dired-hide-dotfiles)
+   dotspacemacs-additional-packages '(evil-escape websocket simple-httpd dired-hide-dotfiles posframe)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -696,6 +696,69 @@
       :config
       (evil-collection-define-key 'normal 'dired-mode-map
         "H" 'dired-hide-dotfiles-mode))
+    (require 'posframe)
+    (add-to-list 'load-path "~/.spacemacs.d/site-lisp/emacs-rime")
+    (require 'rime)
+    (setq rime-user-data-dir "~/.config/fcitx/rime")
+    (setq rime-posframe-properties
+          (list :background-color "#333333"
+                :foreground-color "#dcdccc"
+                :font "YaHei Consolas Hybrid"
+                :internal-border-width 10))
+    (setq default-input-method "rime"
+          rime-show-candidate 'posframe)
+    ;;https://sunyour.org/post/emacs-%E5%86%85%E7%BD%AE%E8%BE%93%E5%85%A5%E6%B3%95%E6%AD%A3%E5%BC%8F%E6%94%B9%E7%94%A8-emacs-rime/
+    (defun +rime--char-before-to-string (num)
+      (let* ((point (point))
+             (point-before (- point num)))
+        (when (and (> point-before 0)
+                   (char-before point-before))
+          (char-to-string (char-before point-before)))))
+
+    (defun +rime--string-match-p (regexp string &optional start)
+      (and (stringp regexp)
+           (stringp string)
+           (string-match-p regexp string start)))
+
+    (defun +rime--probe-auto-english ()
+      (let ((str-before-1 (+rime--char-before-to-string 0))
+            (str-before-2 (+rime--char-before-to-string 1)))
+        (unless (string= (buffer-name) " *temp*")
+          (if (> (point) (save-excursion (back-to-indentation)
+                                         (point)))
+              (or (if (+rime--string-match-p " " str-before-1)
+                      (+rime--string-match-p "\\cc" str-before-2)
+                    (not (+rime--string-match-p "\\cc" str-before-1))))))))
+
+    (defun +rime--beancount-p ()
+      (when (derived-mode-p 'beancount-mode)
+        (not (or (nth 3 (syntax-ppss))
+                 (nth 4 (syntax-ppss))))))
+
+    (defun +rime--evil-mode-p ()
+      (or (evil-normal-state-p)
+          (evil-visual-state-p)
+          (evil-motion-state-p)
+          (evil-operator-state-p)))
+
+    (defun +rime-english-prober()
+      (let ((use-en (or (button-at (point))
+                        (+rime--evil-mode-p))))
+        (if (derived-mode-p 'telega-chat-mode)
+            (setq use-en (or use-en
+                             (+rime--probe-auto-english)))
+          (when (derived-mode-p 'text-mode)
+            (setq use-en (or use-en
+                             (+rime--probe-auto-english))))
+          (when (derived-mode-p 'prog-mode 'conf-mode)
+            (setq use-en (or use-en
+                             (rime--after-alphabet-char-p))))
+          (setq use-en (or use-en
+                           (rime--prog-in-code-p)
+                           (+rime--beancount-p))))
+        use-en))
+
+    (setq rime-disable-predicates '(+rime-english-prober))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
