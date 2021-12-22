@@ -759,6 +759,7 @@
         use-en))
 
     (setq rime-disable-predicates '(+rime-english-prober))
+    (setq org-roam-ui-sync-theme nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
