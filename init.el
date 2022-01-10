@@ -82,11 +82,11 @@
            deft-recursive t
        )
      (shell :variables
-            shell-default-shell 'multi-term
+            shell-default-shell 'vterm
             shell-default-height 30
             shell-default-position 'right
             shell-default-width 50
-            shell-default-term-shell "/bin/bash")
+            shell-default-term-shell "/bin/zsh")
      spell-checking
      syntax-checking
      (version-control :variables
