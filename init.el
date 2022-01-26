@@ -53,11 +53,7 @@
                  imenu-list-position 'left
                  imenu-list-auto-resize t
                  )
-     (git :variables
-          git-magit-status-fullscreen t
-          ;; git-enable-magit-todos-plugin t
-          )
-     (markdown :variables markdown-live-preview-engine `vmd)
+     git
      (python :variables
              python-fill-column 80                ; 开启 80 列的提示
              ;; python-sort-imports-on-save t        ; 当保存的时候自动排序导入的包
