@@ -544,7 +544,9 @@
                                    "-j=2"
                                    "--log=error"
                                     "--header-insertion=never"
-                                    "--header-insertion-decorators=0"))
+                                    "--header-insertion-decorators=0"
+                                    "--limit-results=20"
+                                    "--background-index=false"))
 
     (setq tags-add-tables nil)
     (add-to-list 'auto-mode-alist '("Makefile.*" . makefile-gmake-mode))
