@@ -607,11 +607,17 @@
                                                       '(:immediate-finish t)))))
         (apply #'org-roam-node-insert args)))
 
-    (defun my/open-org-file()
+    (defun my/open-org-inbox-file()
       "Open ~/Dropbox/org/inbox.org file"
       (interactive)
       (find-file "~/Dropbox/org/inbox.org"))
-    (global-set-key (kbd "<f12>") 'my/open-org-file)
+    (global-set-key (kbd "<f12>") 'my/open-org-inbox-file)
+
+    (defun my/open-org-journal-file()
+      "Open ~/Dropbox/org/journal/journal.org file"
+      (interactive)
+      (find-file "~/Dropbox/org/journal/journal.org"))
+    (global-set-key (kbd "<f9>") 'my/open-org-journal-file)
 
     (setq org-enforce-todo-dependencies t)
     (setq org-todo-keyword-faces '(("TODO" . "red")
