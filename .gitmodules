@@ -10,3 +10,6 @@
 [submodule "site-lisp/ox-rst"]
 	path = site-lisp/ox-rst
 	url = https://github.com/msnoigrs/ox-rst
+[submodule "site-lisp/emacs-rime"]
+	path = site-lisp/emacs-rime
+	url = https://github.com/DogLooksGood/emacs-rime
