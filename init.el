@@ -549,6 +549,7 @@
 
     ;; hidden org-download annotation
     (setq org-download-annotate-function (lambda (_link) ""))
+    (setq-default org-download-image-dir "./img")
 
     (defun org-hide-properties ()
       "Hide all org-mode headline property drawers in buffer. Could be slow if it has a lot of overlays."
