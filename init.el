@@ -643,7 +643,7 @@
             ("=" (:foreground "sky blue" )) ;; background of text is "snow1" and text is "deep slate blue"
             ("~" (:background "PaleGreen1" :foreground "dim gray" ))
             ("+" (:strike-through t))))
-    (setq org-hide-emphasis-markers t) ;; hides the emphasis markers
+    ;; (setq org-hide-emphasis-markers t) ;; hides the emphasis markers
 
     ;; toggle open/fold source blocks
     (defvar org-blocks-hidden nil)
