@@ -664,6 +664,9 @@
     (remove-hook 'magit-status-sections-hook 'magit-insert-status-headers)
     (setq org-image-actual-width '(800))
 
+    (add-to-list 'load-path "~/.spacemacs.d/site-lisp/ox-rst")
+    (require 'ox-rst)
+
     ;; org-roam-ui
     (add-to-list 'load-path "~/.spacemacs.d/site-lisp/org-roam-ui")
     (load-library "org-roam-ui")

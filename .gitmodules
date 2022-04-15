@@ -7,3 +7,6 @@
 [submodule "site-lisp/org-roam-ui"]
 	path = site-lisp/org-roam-ui
 	url = https://github.com/org-roam/org-roam-ui
+[submodule "site-lisp/ox-rst"]
+	path = site-lisp/ox-rst
+	url = https://github.com/msnoigrs/ox-rst
