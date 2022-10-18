@@ -444,7 +444,7 @@
   ;; (require 'evil-escape)
   (setq-default evil-escape-delay 0.5)
   (setq evil-escape-excluded-major-modes '(dired-mode))
-  (setq evil-escape-excluded-major-modes (list 'magit-status-mode 'magit-refs-mode 'magit-log-mode 'magit-revision-mode 'compilation-mode))
+  (setq evil-escape-excluded-major-modes (list 'magit-status-mode 'magit-refs-mode 'magit-log-mode 'magit-revision-mode 'compilation-mode 'magit-stash-mode))
   (setq-default evil-escape-key-sequence "kj")
   (evil-escape-mode 1)
   ;; }}
