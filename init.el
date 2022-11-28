@@ -756,6 +756,8 @@
 
     ;; <s TAB
     (require 'org-tempo)
+    (add-to-list 'load-path (expand-file-name "~/.spacemacs.d/site-lisp/company-english-helper"))
+    (require 'company-english-helper)
 
     (setq org-roam-ui-sync-theme nil)
   )
