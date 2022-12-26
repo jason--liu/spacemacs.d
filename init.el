@@ -96,7 +96,9 @@
                treemacs-use-filewatch-mode t
                )
      shell-scripts
-     (lsp :variables lsp-lens-enable t)
+     (lsp :variables lsp-lens-enable t
+          lsp-ui-doc-enable nil
+          )
      semantic
      graphviz
      (spacemacs-layouts :variables layouts-enable-autosave t
