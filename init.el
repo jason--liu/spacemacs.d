@@ -80,7 +80,7 @@
      (shell :variables
             shell-default-shell 'vterm
             shell-default-height 30
-            shell-default-position 'right
+            shell-default-position 'bottom
             shell-default-width 50
             shell-default-term-shell "/bin/zsh")
      spell-checking
