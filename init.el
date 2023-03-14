@@ -98,6 +98,7 @@
      shell-scripts
      (lsp :variables lsp-lens-enable t
           lsp-ui-doc-enable nil
+          lsp-ui-sideline-enable nil
           )
      semantic
      graphviz
