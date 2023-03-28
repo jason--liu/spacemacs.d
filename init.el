@@ -110,7 +110,7 @@
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(evil-escape websocket simple-httpd dired-hide-dotfiles posframe)
+   dotspacemacs-additional-packages '(evil-escape websocket simple-httpd dired-hide-dotfiles posframe memory-usage anki-editor)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
