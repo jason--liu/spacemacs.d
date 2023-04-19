@@ -189,7 +189,7 @@
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
    dotspacemacs-default-font '("YaHei Consolas Hybrid"
-                               :size 18
+                               :size 26
                                :weight normal
                                :width normal
                                :powerline-scale 1.1)
