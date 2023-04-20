@@ -763,6 +763,12 @@
     (require 'company-english-helper)
 
     (setq org-roam-ui-sync-theme nil)
+    (defun file-name-only ()
+      "Get the current buffer file name without directory."
+      (file-name-nondirectory (buffer-name)))
+    (defun file-name-only-noext ()
+      "Get the current buffer file name without directory and extension."
+      (file-name-sans-extension (file-name-only)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
