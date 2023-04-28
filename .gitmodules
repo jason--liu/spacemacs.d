@@ -16,3 +16,9 @@
 [submodule "site-lisp/company-english-helper"]
 	path = site-lisp/company-english-helper
 	url = https://github.com/manateelazycat/company-english-helper
+[submodule "site-lisp/emms"]
+	path = site-lisp/emms
+	url = https://git.savannah.gnu.org/git/emms.git
+[submodule "site-lisp/mpvi"]
+	path = site-lisp/mpvi
+	url = https://github.com/lorniu/mpvi.git

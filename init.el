@@ -769,6 +769,15 @@
     (defun file-name-only-noext ()
       "Get the current buffer file name without directory and extension."
       (file-name-sans-extension (file-name-only)))
+
+    (global-set-key (kbd "M-\"") 'shell-command)
+    (add-to-list 'load-path "~/.spacemacs.d/site-lisp/emms")
+    (require 'emms-setup)
+
+    (add-to-list 'load-path "~/.spacemacs.d/site-lisp/mpvi")
+    (require 'mpvi)
+
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
