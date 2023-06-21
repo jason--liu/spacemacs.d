@@ -105,6 +105,9 @@
      graphviz
      (spacemacs-layouts :variables layouts-enable-autosave t
                         layouts-autosave-delay 300)
+     (plantuml :variables plantuml-jar-path "~/Dropbox/plantuml.jar"
+               org-plantuml-jar-path "~/Dropbox/plantuml.jar"
+               )
 
      )
    ;; List of additional packages that will be installed without being
