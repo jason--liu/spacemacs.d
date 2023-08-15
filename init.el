@@ -760,6 +760,7 @@
         use-en))
 
     (setq rime-disable-predicates '(+rime-english-prober))
+    (setq org-agenda-files '("~/Dropbox/org/gtd.org"))
 
     ;; <s TAB
     (require 'org-tempo)
