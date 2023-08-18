@@ -619,7 +619,7 @@
                                   ("DONE" . "green")))
     (setq org-todo-keywords '((sequence "TODO(t!)" "DOING(i!)" "|" "DONE(d!)" "ABORT(a!)")))
     (setq org-capture-templates '(("t" "Todo [inbox]" entry
-                                   (file+headline "~/Dropbox/org/inbox.org" "Tasks")
+                                   (file+headline "~/Dropbox/org/gtd.org" "Tasks")
                                    "* TODO %i%?")
                                 ("j" "Journal"  entry
                                   (file+datetree "~/Dropbox/org/journal/journal.org")
