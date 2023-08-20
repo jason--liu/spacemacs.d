@@ -376,15 +376,6 @@
   This is the place where most of your configurations should be done. Unless it is
   explicitly specified that a variable should be set before a package is loaded,
   you should place your code here."
-
-  ;; (setq ycmd-force-semantic-completion t)
-  ;; (setq ycmd-server-command '("/usr/bin/python2" "/work/github/ycmd/ycmd"))
-  ;; (setq ycmd-extra-conf-whitelist '("~/.global_conf.py"))
-  ;; (setq ycmd-global-config "~/.global_conf.py")
-  ;; (setq ycmd-startup-timeout 20)
-  ;; (add-hook 'c-mode-hook 'ycmd-mode)
-  ;; (add-hook 'python-mode-hook 'ycmd-mode)
-
   (setq powerline-default-separator 'slant)
   (defun my-c-mode-font-lock-if0 (limit)
     (save-restriction
@@ -415,36 +406,6 @@
      '((my-c-mode-font-lock-if0 (0 font-lock-comment-face prepend))) 'add-to-end))
 
   (add-hook 'c-mode-common-hook 'my-c-mode-common-hook)
-
-  (defun copy-to-clipboard ()
-    "Copies selection to x-clipboard."
-    (interactive)
-    (if (display-graphic-p)
-        (progn
-          (message "Yanked region to x-clipboard!")
-          (call-interactively 'clipboard-kill-ring-save)
-          )
-      (if (region-active-p)
-          (progn
-            (shell-command-on-region (region-beginning) (region-end) "xsel -i -b")
-            (message "Yanked region to clipboard!")
-            (deactivate-mark))
-        (message "No region active; can't yank to clipboard!")))
-    )
-
-  (defun paste-from-clipboard ()
-    "Pastes from x-clipboard."
-    (interactive)
-    (if (display-graphic-p)
-        (progn
-          (clipboard-yank)
-          (message "graphics active")
-          )
-      (insert (shell-command-to-string "xsel -o -b"))
-      )
-    )
-  (evil-leader/set-key "o c" 'copy-to-clipboard)
-  (evil-leader/set-key "o p" 'paste-from-clipboard)
 
   (setq linum-format "%d ")
   ;; {{ https://github.com/syl20bnr/evil-escape
