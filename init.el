@@ -518,16 +518,6 @@
                         ol))
                 (hl-line-mode 1)))
 
-    (require 'hi-lock)
-    (defun jpt-toggle-mark-word-at-point ()
-      (interactive)
-      (if hi-lock-interactive-patterns
-          (unhighlight-regexp (car (car hi-lock-interactive-patterns)))
-        (highlight-symbol-at-point)))
-
-    (global-set-key (kbd "s-.") 'jpt-toggle-mark-word-at-point)
-    (setq x86-lookup-pdf "~/Documents/x86/intel_rm.pdf")
-
     ;; disable clangd auto fill headers
     (setq lsp-clients-clangd-args `(
                                    "-j=2"
@@ -774,14 +764,6 @@
     (defun file-name-only-noext ()
       "Get the current buffer file name without directory and extension."
       (file-name-sans-extension (file-name-only)))
-
-    (global-set-key (kbd "M-\"") 'shell-command)
-    (add-to-list 'load-path "~/.spacemacs.d/site-lisp/emms")
-    (require 'emms-setup)
-
-    (add-to-list 'load-path "~/.spacemacs.d/site-lisp/mpvi")
-    (require 'mpvi)
-
 
   )
 
