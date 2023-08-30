@@ -22,3 +22,6 @@
 [submodule "site-lisp/mpvi"]
 	path = site-lisp/mpvi
 	url = https://github.com/lorniu/mpvi.git
+[submodule "site-lisp/org-excalidraw"]
+	path = site-lisp/org-excalidraw
+	url = https://github.com/wdavew/org-excalidraw.git

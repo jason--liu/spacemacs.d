@@ -726,6 +726,9 @@
       "Get the current buffer file name without directory and extension."
       (file-name-sans-extension (file-name-only)))
 
+    (add-to-list 'load-path "~/.spacemacs.d/site-lisp/org-excalidraw")
+    (require 'org-excalidraw)
+    (setq org-excalidraw-directory "~/Dropbox/org/org_excalidraw")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
