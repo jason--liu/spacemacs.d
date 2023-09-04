@@ -719,6 +719,8 @@
     (require 'company-english-helper)
 
     (setq org-roam-ui-sync-theme nil)
+
+    ;; https://zhuanlan.zhihu.com/p/467681146
     (defun file-name-only ()
       "Get the current buffer file name without directory."
       (file-name-nondirectory (buffer-name)))
