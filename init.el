@@ -732,6 +732,7 @@
     (require 'org-excalidraw)
     (setq org-excalidraw-directory "~/Dropbox/org/org_excalidraw")
 
+    ;; https://emacs-china.org/t/org-tidy-org-mode/25706
     (require 'org-tidy)
     (add-hook 'org-mode-hook #'org-tidy-mode)
   )
