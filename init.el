@@ -45,7 +45,10 @@
                       auto-completion-enable-sort-by-usage t
                       auto-completion-enable-snippets-in-popup t
                       auto-completion-enable-help-tooltip t
-                      auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/")
+                      auto-completion-private-snippets-directory "~/.spacemacs.d/snippets/"
+                      ;; https://emacs.stackexchange.com/questions/67991/how-to-enable-yasnippets-for-all-modes
+                      ;; auto-completion-tab-key-behavior 'complete ;;'coomplete 'cycle
+                      )
      better-defaults
      emacs-lisp
      (imenu-list :variables
