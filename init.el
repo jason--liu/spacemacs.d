@@ -117,7 +117,11 @@
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '(evil-escape websocket simple-httpd dired-hide-dotfiles posframe memory-usage anki-editor org-tidy)
+   dotspacemacs-additional-packages '(evil-escape websocket
+                                                  simple-httpd
+                                                  dired-hide-dotfiles
+                                                  posframe memory-usage
+                                                  anki-editor org-tidy smart-compile)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -740,6 +744,13 @@
     ;; https://emacs-china.org/t/org-tidy-org-mode/25706
     (require 'org-tidy)
     (add-hook 'org-mode-hook #'org-tidy-mode)
+
+    (require 'smart-compile)
+    (setq smart-compile-alist
+          '(("\\.c\\'" . "gcc -g -Wall %f -o %n.bin")
+            ("\\.[Cc]+[Pp]*\\'" . "g++ -g -Wall %f  -o %n")
+            )
+          )
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
