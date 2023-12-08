@@ -121,6 +121,7 @@
                                                   simple-httpd
                                                   dired-hide-dotfiles
                                                   posframe memory-usage
+                                                  leetcode
                                                   anki-editor org-tidy smart-compile)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -769,6 +770,8 @@
                         )
         (message "No Compilation Warnings or Errors!")))
     (add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
+
+    (setq leetcode-prefer-language "c")
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
