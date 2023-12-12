@@ -122,6 +122,7 @@
                                                   dired-hide-dotfiles
                                                   posframe memory-usage
                                                   leetcode
+                                                  apheleia
                                                   anki-editor org-tidy smart-compile)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
