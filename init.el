@@ -773,6 +773,7 @@
     (add-hook 'compilation-finish-functions 'bury-compile-buffer-if-successful)
 
     (setq leetcode-prefer-language "c")
+    (setq auto-revert-check-vc-info t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
