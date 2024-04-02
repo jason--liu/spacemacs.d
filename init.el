@@ -774,6 +774,23 @@
 
     (setq leetcode-prefer-language "c")
     (setq auto-revert-check-vc-info t)
+
+    (add-hook 'gud-mode-hook
+              (lambda ()
+                (local-set-key (kbd "q") 'my-gud-mode-exit)))
+    (defun my-gud-mode-exit ()
+      "Exit GUD mode and delete the window."
+      (interactive)
+      (let ((debugger-buffer (current-buffer))
+            (debugger-window (selected-window)))
+        (quit-window)
+        (delete-window debugger-window)
+        (kill-buffer debugger-buffer)
+        (gud-basic-call "quit")))
+
+    (add-hook 'gud-mode-hook
+              (lambda ()
+                (local-set-key (kbd "q") 'my-gud-mode-exit)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
