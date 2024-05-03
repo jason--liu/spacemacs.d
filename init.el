@@ -751,7 +751,7 @@
     ;; http://blog.chinaunix.net/uid-20982635-id-1831343.html
     (setq smart-compile-alist
           '(("\\.c\\'" . "gcc -g -Wall %f -o %n.bin")
-            ("\\.[Cc]+[Pp]*\\'" . "g++ -g -Wall %f  -o %n")
+            ("\\.[Cc]+[Pp]*\\'" . "g++ -g -Wall %f  -o %n.bin")
             )
           )
 
