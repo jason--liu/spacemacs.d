@@ -791,6 +791,10 @@
     (add-hook 'gud-mode-hook
               (lambda ()
                 (local-set-key (kbd "q") 'my-gud-mode-exit)))
+    (quickrun-add-command "c/gcc"
+      '((:exec . ("%c -Wall -Werror %o -o %e %s"
+	              "%e %a")))
+       :override t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
