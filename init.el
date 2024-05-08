@@ -792,7 +792,7 @@
               (lambda ()
                 (local-set-key (kbd "q") 'my-gud-mode-exit)))
     (quickrun-add-command "c/gcc"
-      '((:exec . ("%c -Wall -Werror %o -o %e %s"
+      '((:exec . ("%c -x c -Wall -Werror %o -o %e %s"
 	              "%e %a")))
        :override t)
   )
