@@ -502,6 +502,7 @@
 
     ;; hidden org-download annotation
     (setq org-download-annotate-function (lambda (_link) ""))
+    (setq-default org-download-heading-lvl nil)
     (setq-default org-download-image-dir "./img")
 
     (defun org-hide-properties ()
